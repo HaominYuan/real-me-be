@@ -25,10 +25,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-### Java template
-# Compiled class file
-*.class
-
 # Log file
 *.log
 
@@ -58,14 +54,7 @@ hs_err_pid*
 *.iml
 out
 gen
-### Example user template template
-### Example user template
 
-# IntelliJ project files
-.idea
-*.iml
-out
-gen
 ### macOS template
 # General
 .DS_Store
@@ -93,31 +82,3 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
-
-### Example user template template
-### Example user template
-
-# IntelliJ project files
-.idea
-*.iml
-out
-gen
-!/.gitignore
-.editorconfig
-.gitignore
-.idea/.gitignore
-.idea/.name
-.idea/compiler.xml
-.idea/encodings.xml
-.idea/jarRepositories.xml
-.idea/libraries/
-.idea/misc.xml
-.idea/modules.xml
-.idea/vcs.xml
-.mvn/
-mvnw
-mvnw.cmd
-pom.xml
-real-me.iml
-src/
-target/
