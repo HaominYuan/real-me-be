@@ -82,3 +82,10 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+*.class
+
+*.jar
+*.war
+*.ear
+.mtj.tmp/
