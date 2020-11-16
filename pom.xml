@@ -65,13 +65,13 @@
 
   <build>
     <plugins>
-<!--      <plugin>-->
-<!--        <artifactId>maven-compiler-plugin</artifactId>-->
-<!--        <version>${maven-compiler-plugin.version}</version>-->
-<!--        <configuration>-->
-<!--          <release>11</release>-->
-<!--        </configuration>-->
-<!--      </plugin>-->
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler-plugin.version}</version>
+        <configuration>
+          <release>11</release>
+        </configuration>
+      </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
         <version>${maven-shade-plugin.version}</version>
