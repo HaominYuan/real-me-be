@@ -21,26 +21,18 @@ jobs:
 
             - uses: actions/setup-java@v1
               with:
-                java-version: '11' # The JDK version to make available on the path.
+                java-version: '11'
 
-#            - name: Use Node.js ${{ matrix.node-version }}
-#              uses: actions/setup-node@v1
-#              with:
-#                  node-version: ${{ matrix.node-version }}
-#
-#            - name: Install dependencies
-#              run: npm install
-#
-#            - name: Build
-#              run: npm run build --if-present
+            - name: Build with Maven
+              run: mvn package
 
-#            - name: Deploy to Server
-#              uses: AEnterprise/rsync-deploy@v1.0
-#              env:
-#                  DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-#                  ARGS: -avz --delete --exclude='*.pyc'
-#                  SERVER_PORT: '22'
-#                  FOLDER: ./build/*
-#                  SERVER_IP: ${{ secrets.SSH_HOST }}
-#                  USERNAME: ${{ secrets.SSH_USERNAME }}
-#                  SERVER_DESTINATION: /root/build/
+            - name: Deploy to Server
+              uses: AEnterprise/rsync-deploy@v1.0
+              env:
+                  DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+                  ARGS: -avz --delete --exclude='*.pyc'
+                  SERVER_PORT: '22'
+                  FOLDER: ./target/real-me-1.0.0-SNAPSHOT-fat.jar
+                  SERVER_IP: ${{ secrets.SSH_HOST }}
+                  USERNAME: ${{ secrets.SSH_USERNAME }}
+                  SERVER_DESTINATION: /root/javabuild/

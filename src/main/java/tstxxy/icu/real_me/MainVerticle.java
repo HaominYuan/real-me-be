@@ -10,7 +10,6 @@ public class MainVerticle extends AbstractVerticle {
     @Override
     public void start(Promise<Void> startPromise) throws Exception {
         router = Router.router(vertx);
-
         router.get("/hello").handler(ctx -> {
             var response = ctx.response();
             response.setChunked(true);
