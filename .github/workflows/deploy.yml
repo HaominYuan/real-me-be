@@ -27,7 +27,7 @@ jobs:
               run: sudo mvn -v
 
             - name: Build with Maven
-              run: sudo mvn package
+              run: sudo mvn -B package --file pom.xml
 
 
             - name: Deploy to Server
