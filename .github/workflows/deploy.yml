@@ -20,7 +20,10 @@ jobs:
               with:
                 java-version: '11'
 
-            - name: Show version
+            - name: Show Java version
+              run: java -version
+
+            - name: Show maven version
               run: sudo mvn -v
 
             - name: Build with Maven
