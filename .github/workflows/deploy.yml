@@ -3,7 +3,7 @@ name: Backend CI/CD
 on:
     push:
         branches:
-            - master
+            - main
         paths-ignore:
             - README.md
             - LICENSE
@@ -13,9 +13,6 @@ jobs:
     build-production:
 
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [14.x]
         steps:
             - uses: actions/checkout@v2
 
