@@ -22,7 +22,7 @@ jobs:
                 java-version: '11'
 
             - name: Build with Maven
-              run: sudo mvn package
+              run: sudo mvn package -e
 
 #            - name: Deploy to Server
 #              uses: AEnterprise/rsync-deploy@v1.0
