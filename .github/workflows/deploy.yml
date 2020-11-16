@@ -24,13 +24,13 @@ jobs:
             - name: Build with Maven
               run: mvn package -e -Dmaven.test.skip=true
 
-#            - name: Deploy to Server
-#              uses: AEnterprise/rsync-deploy@v1.0
-#              env:
-#                  DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-#                  ARGS: -avz --delete --exclude='*.pyc'
-#                  SERVER_PORT: '22'
-#                  FOLDER: ./target/real-me-1.0.0-SNAPSHOT-fat.jar
-#                  SERVER_IP: ${{ secrets.SSH_HOST }}
-#                  USERNAME: ${{ secrets.SSH_USERNAME }}
-#                  SERVER_DESTINATION: /root/javabuild/
+            - name: Deploy to Server
+              uses: AEnterprise/rsync-deploy@v1.0
+              env:
+                  DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+                  ARGS: -avz --delete --exclude='*.pyc'
+                  SERVER_PORT: '22'
+                  FOLDER: ./target/real-me-1.0.0-SNAPSHOT-fat.jar
+                  SERVER_IP: ${{ secrets.SSH_HOST }}
+                  USERNAME: ${{ secrets.SSH_USERNAME }}
+                  SERVER_DESTINATION: /root/javabuild/
