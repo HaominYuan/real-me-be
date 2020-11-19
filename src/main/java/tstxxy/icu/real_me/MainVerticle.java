@@ -20,6 +20,16 @@ public class MainVerticle extends AbstractVerticle {
             response.write("Hello from Yuan Haomin").end();
         });
 
+        router.get("/new").handler(ctx -> {
+            var response = ctx.response();
+            response.setChunked(true);
+            response.putHeader("content-type", "text/plain");
+            ctx.vertx().setTimer(500, tid -> ctx.next());
+        }).handler(ctx -> {
+            var response = ctx.response();
+            response.write("This is a new page").end();
+        });
+
         vertx.createHttpServer().requestHandler(router).listen(80, http -> {
             if (http.succeeded()) {
                 startPromise.complete();

@@ -33,3 +33,14 @@ jobs:
                     SERVER_IP: ${{ secrets.HOST }}
                     USERNAME: ${{ secrets.USERNAME }}
                     SERVER_DESTINATION: /opt/docker_vertx/target/fat.jar
+
+            -   name: executing remote ssh commands using password
+                    uses: appleboy/ssh-action@master
+                    with:
+                        host: ${{ secrets.HOST }}
+                        username: ${{ secrets.USERNAME }}
+                        key: ${{ secrets.DEPLOY_KEY }}
+                        port: ${{ secrets.PORT }}
+                        script: |
+                            cd /opt/docker_vertx/target/
+                            docker-compose restart
