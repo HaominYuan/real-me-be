@@ -20,7 +20,7 @@ public class MainVerticle extends AbstractVerticle {
             response.write("Hello from Yuan Haomin").end();
         });
 
-        vertx.createHttpServer().requestHandler(router).listen(80, http -> {
+        vertx.createHttpServer().requestHandler(router).listen(8888, http -> {
             if (http.succeeded()) {
                 startPromise.complete();
                 System.out.println("HTTP server started on port 80");
