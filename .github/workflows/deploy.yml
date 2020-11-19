@@ -29,7 +29,7 @@ jobs:
                     DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
                     ARGS: -avz --delete --exclude='*.pyc'
                     SERVER_PORT: '22'
-                    FOLDER: ./target/real-me-1.0.0-SNAPSHOT-fat.jar
+                    FOLDER: ./target/
                     SERVER_IP: ${{ secrets.SSH_HOST }}
                     USERNAME: ${{ secrets.SSH_USERNAME }}
                     SERVER_DESTINATION: /opt/docker_vertx/target/
