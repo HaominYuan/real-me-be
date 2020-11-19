@@ -42,5 +42,5 @@ jobs:
                     key: ${{ secrets.DEPLOY_KEY }}
                     port: ${{ secrets.PORT }}
                     script: |
-                        cd /opt/docker_vertx/target/
+                        cd /opt/docker_vertx/
                         docker-compose restart
