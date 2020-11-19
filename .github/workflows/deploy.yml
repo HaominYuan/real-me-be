@@ -23,24 +23,13 @@ jobs:
             -   name: Build with Maven
                 run: mvn package -e -Dmaven.test.skip=true
 
-#            -   name: Deploy to Server
-#                uses: AEnterprise/rsync-deploy@v1.0
-#                env:
-#                    DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-#                    ARGS: -avz --delete --exclude='*.pyc'
-#                    SERVER_PORT: '22'
-#                    FOLDER: ./target/real-me-version-fat.jar
-#                    SERVER_IP: ${{ secrets.HOST }}
-#                    USERNAME: ${{ secrets.USERNAME }}
-#                    SERVER_DESTINATION: /opt/docker_vertx/target/fat.jar
-
             -   name: Deploy to Server
-                uses: hengkx/ssh-deploy@v1.0.1
+                uses: AEnterprise/rsync-deploy@v1.0
                 env:
-                    HOST: ${{ secrets.HOST }}
+                    DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+                    ARGS: -avz --delete --exclude='*.pyc'
+                    SERVER_PORT: '22'
+                    FOLDER: ./target/real-me-version-fat.jar
+                    SERVER_IP: ${{ secrets.HOST }}
                     USERNAME: ${{ secrets.USERNAME }}
-                    PASSWORD: ${{ secrets.PASSWORD }}
-                    PORT: ${{ secrets.PORT }}
-                    SOURCE: './target/real-me-version-fat.jar'
-                    TARGET: '/opt/docker_vertx/target/fat.jar'
-                    AFTER_COMMAND: 'touch /opt/docker_vertx/target/2'
+                    SERVER_DESTINATION: /opt/docker_vertx/target/fat.jar
