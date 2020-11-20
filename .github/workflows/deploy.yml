@@ -34,16 +34,16 @@ jobs:
                     SERVER_IP: ${{ secrets.HOST }}
                     USERNAME: ${{ secrets.USERNAME }}
 #                    SERVER_DESTINATION: /opt/docker_vertx/target/fat.jar
-                    SERVER_DESTINATION: /opt/docker_vertx/code
+                    SERVER_DESTINATION: /opt/docker_maven/code
 
 
-#            -   name: executing remote ssh commands using password
-#                uses: appleboy/ssh-action@master
-#                with:
-#                    host: ${{ secrets.HOST }}
-#                    username: ${{ secrets.USERNAME }}
-#                    key: ${{ secrets.DEPLOY_KEY }}
-#                    port: ${{ secrets.PORT }}
-#                    script: |
-#                        cd /opt/docker_vertx/
-#                        docker-compose restart
+            -   name: executing remote ssh commands using password
+                uses: appleboy/ssh-action@master
+                with:
+                    host: ${{ secrets.HOST }}
+                    username: ${{ secrets.USERNAME }}
+                    key: ${{ secrets.DEPLOY_KEY }}
+                    port: ${{ secrets.PORT }}
+                    script: |
+                        cd /opt/docker_maven/
+                        docker-compose restart

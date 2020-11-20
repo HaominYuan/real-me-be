@@ -27,7 +27,7 @@ public class MainVerticle extends AbstractVerticle {
             ctx.vertx().setTimer(500, tid -> ctx.next());
         }).handler(ctx -> {
             var response = ctx.response();
-            response.write("This is a new page").end();
+            response.write("This is a new new page").end();
         });
 
         vertx.createHttpServer().requestHandler(router).listen(80, http -> {
