@@ -2,7 +2,9 @@ package tstxxy.icu.real_me;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
+import io.vertx.core.http.HttpMethod;
 import io.vertx.ext.web.Router;
+import io.vertx.ext.web.handler.CorsHandler;
 
 public class MainVerticle extends AbstractVerticle {
     Router router;
@@ -10,6 +12,9 @@ public class MainVerticle extends AbstractVerticle {
     @Override
     public void start(Promise<Void> startPromise) throws Exception {
         router = Router.router(vertx);
+
+        router.route().handler(CorsHandler.create("*").allowedMethod(HttpMethod.GET));
+
         router.get("/hello").handler(ctx -> {
             var response = ctx.response();
             response.setChunked(true);
@@ -28,6 +33,19 @@ public class MainVerticle extends AbstractVerticle {
         }).handler(ctx -> {
             var response = ctx.response();
             response.write("This is a new new page").end();
+        });
+
+        router.get("/block").blockingHandler(ctx -> {
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            ctx.next();
+        }).handler(ctx -> {
+            var response = ctx.response();
+            response.putHeader("content-type", "text/plain");
+            response.end("This is a blocking response with 10s");
         });
 
         vertx.createHttpServer().requestHandler(router).listen(80, http -> {
