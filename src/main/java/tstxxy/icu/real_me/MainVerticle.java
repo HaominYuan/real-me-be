@@ -1,5 +1,6 @@
 package tstxxy.icu.real_me;
 
+import com.sun.tools.jconsole.JConsoleContext;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.core.http.HttpMethod;
@@ -23,6 +24,23 @@ public class MainVerticle extends AbstractVerticle {
         }).handler(ctx -> {
             var response = ctx.response();
             response.write("Hello from Yuan Haomin").end();
+        });
+
+        router.get("/login").handler(ctx -> {
+            var response = ctx.response();
+            response.setChunked(true);
+            response.putHeader("content-type", "text/plain");
+            String login = "tstxxy";
+            String password = "qwer1234";
+            System.out.println(ctx.request().params());
+            var params = ctx.request().params();
+            if (params.get(("username")).equals("tstxxy") && params.get("password").equals("qwer1234")) {
+                response.write("Yes");
+            } else {
+                response.write("No");
+            }
+            response.end();
+
         });
 
         router.get("/new").handler(ctx -> {
