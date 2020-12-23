@@ -23,7 +23,8 @@ public class MainVerticle extends AbstractVerticle {
             ctx.vertx().setTimer(1000, tid -> ctx.next());
         }).handler(ctx -> {
             var response = ctx.response();
-            response.write("Hello from Yuan Haomin").end();
+            response.write("Hello from Yuan Haomin");
+            response.end();
         });
 
         router.get("/login").handler(ctx -> {
@@ -50,7 +51,8 @@ public class MainVerticle extends AbstractVerticle {
             ctx.vertx().setTimer(500, tid -> ctx.next());
         }).handler(ctx -> {
             var response = ctx.response();
-            response.write("This is a new new page").end();
+            response.write("This is a new new page");
+            response.end();
         });
 
         router.get("/block").blockingHandler(ctx -> {
@@ -74,6 +76,5 @@ public class MainVerticle extends AbstractVerticle {
                 startPromise.fail(http.cause());
             }
         });
-
     }
 }
